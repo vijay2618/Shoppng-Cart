@@ -1,0 +1,209 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+     <asp:ContentPlaceHolder id="cphTitle" runat="server">
+         <title>ShoppingCart::</title>
+    </asp:ContentPlaceHolder>
+    
+    <link href="~/CSS/jquery-ui.css" rel="stylesheet" />
+    <link href="~/CSS/style.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="">
+    <form id="form1" runat="server">
+    <table width="996" border="0" cellspacing="0" cellpadding="0" align="center" style="background-color: #efeff3">
+        <tr>
+            <td height="607" valign="top" style="width: 996px">
+                <table width="996" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="285" height="52">
+                            <asp:ImageButton ImageUrl="images/Masterlogo.jpg" CausesValidation="false" ID="imgLogo" runat="server" 
+                                Width="436" Height="52" onclick="imgLogo_Click">
+                            </asp:ImageButton>
+                        </td>
+                        <td width="711" style="background-image: url(images/Checkoutmenu.jpg); background-repeat: no-repeat;"
+                            class="menu">
+                            <table width="581" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="85">
+                                        <span class="style4"><a href="../HomePage.aspx" class="whitetxt">Home Page</a></span>
+                                    </td>
+                                    <td width="116" align="center">
+                                        <span class="style4"><a href="../Products.aspx" class="whitetxt">All products</a></span>
+                                    </td>
+                                    <td width="98" align="center">
+                                        <span class="style4"><a href="../User/HomePage.aspx" class="whitetxt">My Account</a></span>
+                                    </td>
+                                    <td width="98" align="center">
+                                        <span class="style4"><a href="../ContactUs.aspx" class="whitetxt">Contact Us</a></span>
+                                    </td>
+                                    <td width="98" align="center">
+                                        <span class="style4"><a href="SignUp.aspx" class="whitetxt">
+                                            <asp:Label ID="lblSignUp" Text="Register" runat="server"></asp:Label></a>
+                                            <asp:LinkButton ID="lbtnUserName" CausesValidation="false" runat="server" Style="font-variant: small-caps;
+                                                font-weight: bold; color: White;" OnClick="lbtnUserName_Click"></asp:LinkButton>
+                                        </span>
+                                    </td>
+                                    <td width="98" align="center">
+                                        <span class="style4">
+                                            <asp:LoginStatus ID="LoginStatus1" ForeColor="White" Font-Underline="false" runat="server"
+                                                LoginText="Login" LogoutText="Logout"></asp:LoginStatus>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="60%" height="66" align="left" valign="top">
+                            
+                        </td>
+                        <td width="40%">
+                            <table width="399" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="157">
+                                        &nbsp;
+                                    </td>
+                                    <td width="58">
+                                        <asp:ImageButton runat="server" ImageUrl="images/trash.jpg"  Width="47" 
+                                            Height="48" ID="imgCheckout" CausesValidation="false" onclick="imgCheckout_Click" />
+                                    </td>
+                                    <td width="184">
+                                        <span class="style6">
+                                             <asp:LinkButton ID="lbtnCart" Style="color: Black;" runat="server" CausesValidation="false" Text="Shopping Cart"
+                                                OnClick="lbtnCart_Click"></asp:LinkButton>
+                                                
+                                                 </span>
+                                        <asp:Label ID="lblCartCount" Text="" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <div style="width: 996px; margin: auto">
+                    <div >
+                        <asp:ScriptManager ID="scm" runat="server" />
+                        <asp:Timer ID="Timer1" Interval="3500" runat="server" />
+                        <asp:UpdatePanel ID="upImages" runat="server">
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Timer1"  />
+                            </Triggers>
+                            <ContentTemplate>
+                                <div class="rs-slideshow">
+                                    <asp:AdRotator ID="adrImages"  AdvertisementFile="images.xml" Width="975" Height="209"
+                                        Target="_self" runat="server" />
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <br />
+                <table width="996" border="0" cellspacing="0" cellpadding="0">
+                    <tr align="left" valign="top">
+                        <td width="202" height="334">
+                            <table width="202" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td height="200" align="left" valign="top">
+                                        <div class="category">
+                                            <asp:Image ID="Image1" ImageUrl="images/spacer.gif" runat="server" Width="30" Height="19" />
+                                            <b>Categories</b>
+                                            <asp:Image ID="Image2" ImageUrl="images/spacer.gif" runat="server" Width="10" Height="10" />
+                                        </div>
+                                        <div class="linkmenu">
+                                            <asp:ListView runat="server" ID="lvCategory" OnItemCommand="lvCategory_ItemCommand">
+                                                <LayoutTemplate>
+                                                    <div style="color: Black">
+                                                        <div runat="server" id="itemPlaceHolder">
+                                                        </div>
+                                                    </div>
+                                                </LayoutTemplate>
+                                                <ItemTemplate>
+                                                    <asp:HiddenField ID="hfPKCat1Id" runat="server" Value='<%#Eval("PKCategoryId") %>' />
+                                                    <div>
+                                                        <asp:LinkButton ID="lbtnName" CausesValidation="false" runat="server" ForeColor="Black"
+                                                            CommandName="CategoryCommand" CommandArgument='<%#Eval("PKCategoryId") %>' Font-Bold="true"
+                                                            Text='<%#Eval("CategoryName") %>'></asp:LinkButton>
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:ListView>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="26">
+                                        <asp:ContentPlaceHolder ID="cphSpecificProducts" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <asp:Image ID="Image3" ImageUrl="images/banner.jpg" Width="197" Height="215" runat="server" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="20">
+                            &nbsp;
+                        </td>
+                        <td width="774">
+                            <div>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table width="996" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <asp:Image ID="Image4" runat="server" ImageUrl="images/footer.jpg" Width="1016" Height="5" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="76">
+                            <table width="1016" border="0" cellspacing="0" cellpadding="0" style="background-color: lightGrey">
+                                <tr>
+                                    <td width="329" height="78" align="right">
+                                        <span class="category">
+                                            <asp:Image ID="Image5" runat="server" ImageUrl="images/spacer.gif" Width="10" Height="10" />
+                                        </span>
+                                       <asp:ImageButton ImageUrl="images/Masterlogo.jpg" CausesValidation="false" ID="ImageButton1" runat="server" 
+                                Width="290" Height="52" onclick="imgLogo_Click" />
+                                    </td>
+                                    <td width="14">
+                                        &nbsp;
+                                    </td>
+                                    <td width="430">
+                                        <span class="style7"><a href="HomePage.aspx">Home Page</a>&nbsp; | &nbsp;&nbsp;<a
+                                            href="Products.aspx">All Products</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="User/UserHome.aspx">
+                                                My account</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="ContactUs.aspx">Contact Us</a></span><br />
+                                        <br />
+                                        <div style="width: 340px; margin: auto">
+                                            Copyright &copy; 2012</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+
+
+</html>

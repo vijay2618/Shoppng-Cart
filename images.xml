@@ -1,0 +1,35 @@
+<Advertisements>
+  <Ad>
+    <ImageUrl>~/images/header1.png</ImageUrl>
+    <NavigateUrl>~/SpecificProducts.aspx?id=2</NavigateUrl>
+    <AlternateText>Laptops</AlternateText>
+    <Keyword>laptops</Keyword>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>~/images/ChecksShirts.jpg</ImageUrl>
+    <NavigateUrl>~/SpecificProducts.aspx?id=15</NavigateUrl>
+    <AlternateText>Casual Shirts</AlternateText>
+    <Keyword>laptops</Keyword>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>~/images/Cosmetics.jpg</ImageUrl>
+    <NavigateUrl>~/SpecificProducts.aspx?id=14</NavigateUrl>
+    <AlternateText>Cosmetics</AlternateText>
+    <Keyword>laptops</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>~/images/PersonalCare.jpg</ImageUrl>
+    <NavigateUrl>~/SpecificProducts.aspx?id=17</NavigateUrl>
+    <AlternateText>Personal Care</AlternateText>
+    <Keyword>demo</Keyword>
+  </Ad>
+  <Ad>
+    <ImageUrl>~/images/Speakers.jpg</ImageUrl>
+    <NavigateUrl>~/SpecificProducts.aspx?id=16</NavigateUrl>
+    <AlternateText>Speakers</AlternateText>
+    <Keyword>demo</Keyword>
+
+  </Ad>
+</Advertisements>
